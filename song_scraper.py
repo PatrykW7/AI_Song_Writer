@@ -16,7 +16,7 @@ def song_scraper(artists: list):
         pd.DataFrame: A DataFrame containing the scraped song lyrics and their translations. The DataFrame has two columns: "Original" and "Translated."
     """
     dfs = []
-    df_text = pd.DataFrame(data={"Original": [], "Translated": []})
+    df_text = pd.DataFrame(data={"Polish": [], "English": []})
 
     base_url = "https://www.tekstowo.pl"
 
@@ -69,9 +69,7 @@ def song_scraper(artists: list):
                 df_text = pd.concat(
                     [
                         df_text,
-                        pd.DataFrame(
-                            {"Original": [original], "Translated": [translated]}
-                        ),
+                        pd.DataFrame({"Polish": [original], "English": [translated]}),
                     ],
                     ignore_index=True,
                 )
@@ -80,9 +78,7 @@ def song_scraper(artists: list):
                 df_text = pd.concat(
                     [
                         df_text,
-                        pd.DataFrame(
-                            {"Original": [translated], "Translated": [original]}
-                        ),
+                        pd.DataFrame({"Polish": [translated], "English": [original]}),
                     ],
                     ignore_index=True,
                 )
